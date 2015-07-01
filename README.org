@@ -2,6 +2,7 @@
 #+AUTHOR: Jason Lewis
 #+EMAIL: jason@decomplecting.org
 
+A (prototype) next-gen API for [[http://exercism.io][exercism.io]]
 
 ** Usage
 
