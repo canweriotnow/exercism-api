@@ -1,0 +1,4 @@
+#+TITLE: Contributing
+#+AUTHOR: Jason Lewis
+
+** TODO Adapt from existing Exercism contributing guide
