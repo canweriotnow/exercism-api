@@ -6,10 +6,11 @@
 (s/defschema Message {:message String})
 
 (defapi app
+  {:formats :json-kw}
   (swagger-ui)
   (swagger-docs
-    {:info {:title "Exercism-api"
-            :description "Compojure Api example"}
+    {:info {:title "Exercism API"
+            :description "API for Exercism.io"}
      :tags [{:name "hello", :description "says hello in Finnish"}]})
   (context* "/hello" []
     :tags ["hello"]
