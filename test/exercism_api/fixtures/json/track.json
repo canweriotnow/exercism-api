@@ -1,0 +1,52 @@
+{
+    "track": {
+        "language": "Scheme",
+        "active": true,
+        "id": "scheme",
+        "slug": "scheme",
+        "problems": [
+            "scheme/point-mutations",
+            "scheme/leap",
+            "scheme/grains",
+            "scheme/bob",
+            "scheme/raindrops",
+            "scheme/rna-transcription",
+            "scheme/robot-name",
+            "scheme/phone-number",
+            "scheme/anagram",
+            "scheme/nucleotide-count",
+            "scheme/difference-of-squares",
+            "scheme/list-ops"
+        ],
+        "repository": "https://github.com/exercism/xscheme"
+    },
+    "problems": [
+        {
+            "id": "scheme/point-mutations",
+            "track_id": "scheme",
+            "language": "Scheme",
+            "slug": "point-mutations",
+            "name": "Point Mutations",
+            "files": {
+                "point-mutations-test.scm": ";; Load SRFI-64 lightweight testing specification\n(use-modules (srfi srfi-64))\n\n;; Suppress log file output. To write logs, comment out the following line:\n(module-define! (resolve-module '(srfi srfi-64)) 'test-log-to-file #f)\n\n(add-to-load-path (dirname (current-filename)))\n(use-modules (point-mutations))\n\n(test-begin \"point-mutations\")\n\n(test-eqv \"no-difference-between-empty-strands\"\n          0\n          (hamming-distance \"\" \"\"))\n\n(test-eqv \"no-difference-between-identical-strands\"\n          0\n          (hamming-distance \"GATTACA\" \"GATTACA\"))\n\n(test-eqv \"complete-hamming-distance-in-small-strand\"\n          3\n          (hamming-distance \"ACT\" \"GGA\"))\n\n(test-eqv \"small-hamming-distance-in-middle-somewhere\"\n          1\n          (hamming-distance \"GGACG\" \"GGTCG\"))\n\n(test-eqv \"larger-difference\"\n          2\n          (hamming-distance \"ACCAGGG\" \"ACTATGG\"))\n\n(test-error \"invalid-to-get-distance-for-different-length-strings\"\n         #t\n         (hamming-distance \"AGACAACAGCCAGCCGCCGGATT\" \"AGGCAA\"))\n\n\n(test-end \"point-mutations\")\n",
+                "point-mutations.scm": "(define-module (point-mutations)\n  #:export (hamming-distance))\n",
+                "README.md": "# Point Mutations\n\nWrite a program that can calculate the Hamming difference between two DNA strands.\n\nA mutation is simply a mistake that occurs during the creation or\ncopying of a nucleic acid, in particular DNA. Because nucleic acids are\nvital to cellular functions, mutations tend to cause a ripple effect\nthroughout the cell. Although mutations are technically mistakes, a very\nrare mutation may equip the cell with a beneficial attribute. In fact,\nthe macro effects of evolution are attributable by the accumulated\nresult of beneficial microscopic mutations over many generations.\n\nThe simplest and most common type of nucleic acid mutation is a point\nmutation, which replaces one base with another at a single nucleotide.\n\nBy counting the number of differences between two homologous DNA strands\ntaken from different genomes with a common ancestor, we get a measure of\nthe minimum number of point mutations that could have occurred on the\nevolutionary path between the two strands.\n\nThis is called the 'Hamming distance'\n\n    GAGCCTACTAACGGGAT\n    CATCGTAATGACGGCCT\n    ^ ^ ^  ^ ^    ^^\n\nThe Hamming distance between these two DNA strands is 7.\n\n# Implementation notes\n\nThe Hamming distance is only defined for sequences of equal length. Hence you\nmay assume that only sequences of equal length will be passed to your hamming\ndistance function.\n\nNo additional dependencies should be required.\n\nSometimes module functions will be loaded that are useful to the problem case.\nYou'll see them in the `define-package` macro at the top of the source file,\nthus: `#:autoload (mod submod) (function0 function1)`. The curious can read\nabout included modules [here][0].\n\nIf you need help getting set up, see [Getting Started With Scheme][1]\nin the [Exercism.io Help][2] pages.\n\n[0]: https://www.gnu.org/software/guile/docs/docs-2.0/guile-ref/Included-Guile-Modules.html\n[1]: http://help.exercism.io/getting-started-with-scheme.html\n[2]: http://help.exercism.io\n\n## Source\n\nThe Calculating Point Mutations problem at Rosalind [view source](http://rosalind.info/problems/hamm/)\n"
+            },
+            "fresh": false
+        },
+        {
+            "id": "scheme/leap",
+            "track_id": "scheme",
+            "language": "Scheme",
+            "slug": "leap",
+            "name": "Leap",
+            "files": {
+                "leap-test.scm": ";; Load SRFI-64 lightweight testing specification\n(use-modules (srfi srfi-64))\n\n;; Suppress log file output. To write logs, comment out the following line:\n(module-define! (resolve-module '(srfi srfi-64)) 'test-log-to-file #f)\n\n;; Require module\n(add-to-load-path (dirname (current-filename)))\n(use-modules (leap-year))\n\n(test-begin \"leap-year\")\n\n(test-eqv \"vanilla-leap-year\"\n          #t\n          (leap-year? 1996))\n\n(test-eqv \"any-old-year\"\n          #f\n          (leap-year? 1997))\n\n(test-eqv \"non-leap-even-year\"\n          #f\n          (leap-year? 1998))\n\n(test-eqv \"century\"\n          #f\n          (leap-year? 1900))\n\n(test-eqv \"exceptional-century\"\n          #t\n          (leap-year? 2400))\n\n(test-end \"leap-year\")\n",
+                "leap-year.scm": "(define-module (leap-year)\n  #:export (leap-year?))\n",
+                "README.md": "# Leap\n\nWrite a program that will take a year and report if it is a leap year.\n\nThe tricky thing here is that a leap year occurs:\n\n```plain\non every year that is evenly divisible by 4\n  except every year that is evenly divisible by 100\n    unless the year is also evenly divisible by 400\n```\n\nFor example, 1997 is not a leap year, but 1996 is.  1900 is not a leap\nyear, but 2000 is.\n\nIf your language provides a method in the standard library that does\nthis look-up, pretend it doesn't exist and implement it yourself.\n\n## Notes\n\nFor a delightful, four minute explanation of the whole leap year\nphenomenon, go watch [this youtube video][video].\n\n[video]: http://www.youtube.com/watch?v=xX96xng7sAE\n\nNo additional dependencies should be required.\n\nSometimes module functions will be loaded that are useful to the problem case.\nYou'll see them in the `define-package` macro at the top of the source file,\nthus: `#:autoload (mod submod) (function0 function1)`. The curious can read\nabout included modules [here][0].\n\nIf you need help getting set up, see [Getting Started With Scheme][1]\nin the [Exercism.io Help][2] pages.\n\n[0]: https://www.gnu.org/software/guile/docs/docs-2.0/guile-ref/Included-Guile-Modules.html\n[1]: http://help.exercism.io/getting-started-with-scheme.html\n[2]: http://help.exercism.io\n\n## Source\n\nJavaRanch Cattle Drive, exercise 3 [view source](http://www.javaranch.com/leap.jsp)\n"
+            },
+            "fresh": false
+        },
+
+    ]
+}

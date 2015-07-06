@@ -1,0 +1,53 @@
+{
+  "tracks": [
+    {
+      "slug": "assembly",
+      "problems": [],
+      "repository": "https://github.com/exercism/xassembly",
+      "language": "Assembly",
+      "id": "assembly",
+      "active": false
+    },
+    {
+      "slug": "bash",
+      "problems": [],
+      "repository": "https://github.com/exercism/xbash",
+      "language": "Bash",
+      "id": "bash",
+      "active": false
+    },
+    {
+      "slug": "c",
+      "problems": [
+        "c/hamming",
+        "c/raindrops"
+      ],
+      "repository": "https://github.com/exercism/xc",
+      "language": "C",
+      "id": "c",
+      "active": false
+    },
+    {
+      "slug": "clojure",
+      "problems": [
+        "clojure/bob",
+        "clojure/rna-transcription",
+        "clojure/word-count",
+        "clojure/anagram",
+        "clojure/beer-song",
+        "clojure/nucleotide-count",
+        "clojure/robot-simulator",
+        "clojure/queen-attack",
+        "clojure/accumulate",
+        "clojure/binary-search-tree",
+        "clojure/difference-of-squares",
+        "clojure/hexadecimal",
+        "clojure/largest-series-product"
+      ],
+      "repository": "https://github.com/exercism/xclojure",
+      "language": "Clojure",
+      "id": "clojure",
+      "active": true
+    }
+  ]
+}

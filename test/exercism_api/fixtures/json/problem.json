@@ -1,0 +1,15 @@
+{
+  "problem": {
+    "id": "scheme/leap",
+    "language": "Scheme",
+    "track_id": "scheme",
+    "name": "Leap",
+    "slug": "leap",
+    "files": {
+      "leap-test.scm": ";; Load SRFI-64 lightweight testing specification\n(use-modules (srfi srfi-64))\n\n;; Suppress log file output. To write logs, comment out the following line:\n(module-define! (resolve-module '(srfi srfi-64)) 'test-log-to-file #f)\n\n;; Require module\n(add-to-load-path (dirname (current-filename)))\n(use-modules (leap-year))\n\n(test-begin \"leap-year\")\n\n(test-eqv \"vanilla-leap-year\"\n          #t\n          (leap-year? 1996))\n\n(test-eqv \"any-old-year\"\n          #f\n          (leap-year? 1997))\n\n(test-eqv \"non-leap-even-year\"\n          #f\n          (leap-year? 1998))\n\n(test-eqv \"century\"\n          #f\n          (leap-year? 1900))\n\n(test-eqv \"exceptional-century\"\n          #t\n          (leap-year? 2400))\n\n(test-end \"leap-year\")\n",
+      "leap-year.scm": "(define-module (leap-year)\n  #:export (leap-year?))\n",
+      "README.md": "# Leap\n\nWrite a program that will take a year and report if it is a leap year.\n\nThe tricky thing here is that a leap year occurs:\n\n```plain\non every year that is evenly divisible by 4\n  except every year that is evenly divisible by 100\n    unless the year is also evenly divisible by 400\n```\n\nFor example, 1997 is not a leap year, but 1996 is.  1900 is not a leap\nyear, but 2000 is.\n\nIf your language provides a method in the standard library that does\nthis look-up, pretend it doesn't exist and implement it yourself.\n\n## Notes\n\nFor a delightful, four minute explanation of the whole leap year\nphenomenon, go watch [this youtube video][video].\n\n[video]: http://www.youtube.com/watch?v=xX96xng7sAE\n\nNo additional dependencies should be required.\n\nSometimes module functions will be loaded that are useful to the problem case.\nYou'll see them in the `define-package` macro at the top of the source file,\nthus: `#:autoload (mod submod) (function0 function1)`. The curious can read\nabout included modules [here][0].\n\nIf you need help getting set up, see [Getting Started With Scheme][1]\nin the [Exercism.io Help][2] pages.\n\n[0]: https://www.gnu.org/software/guile/docs/docs-2.0/guile-ref/Included-Guile-Modules.html\n[1]: http://help.exercism.io/getting-started-with-scheme.html\n[2]: http://help.exercism.io\n\n## Source\n\nJavaRanch Cattle Drive, exercise 3 [view source](http://www.javaranch.com/leap.jsp)\n"
+    },
+    "fresh": false
+  }
+}

@@ -1,4 +1,4 @@
-(ns exercism-api.models
+(ns exercism-api.schema
   (require [schema.core :as s]))
 
 (s/defschema Track
