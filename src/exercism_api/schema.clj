@@ -20,6 +20,11 @@
            }
    :fresh s/Bool})
 
+(s/defschema Test
+  {:track_id s/Str
+   :slug s/Str
+   :test s/Str})
+
 (s/defschema Comment
   ;; STUB
   {:id s/Num

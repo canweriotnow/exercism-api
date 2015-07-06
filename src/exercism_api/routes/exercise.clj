@@ -30,4 +30,22 @@
   (GET* "/problems/:track-id/:slug" [track-id slug]
         :return Problem
         :summary "Single problem within a track"
+        (dummy))
+  (GET* "/problems/:track-id/:slug/readme" [track-id slug]
+        :return Problem
+        :summary "Problem README"
+        (dummy))
+  (GET* "/problems/:track-id:slug/tests" [track-id slug]
+        :return Test
+        :summary "Problem test"
+        (dummy))
+  (GET* "/exercises" []
+        :return [Exercise]
+        :query-params [key :- String]
+        :summary "Retrieve exercises for user"
+        (dummy))
+  (GET* "/exercises/:track-id" [track-id]
+        :return [Exercise]
+        :query-params [key :- String]
+        :summary "Retrieve per-track exercises for user"
         (dummy)))
