@@ -1,6 +1,6 @@
 (ns exercism-api.auth
   (:require [pandect.algo.sha1 :refer :all]
-            [environ.core :as env]))
+            [environ.core :refer [env]]))
 
 ;; Based on Exercism::Rikki from exercism/exercism.io
 ;; Subject to change, just working on reproducing
