@@ -1,7 +1,8 @@
 (ns exercism-api.handler
   (:require [compojure.api.sweet :refer :all]
             [ring.util.http-response :refer :all]
-            [schema.core :as s]))
+            [schema.core :as s]
+            [exercism-api.routes.exercise :refer [exercise-routes]]))
 
 (s/defschema Message {:message String})
 
@@ -12,8 +13,9 @@
     {:info {:title "Exercism API"
             :description "API for Exercism.io"}
      :tags [{:name "hello", :description "says hello in Finnish"}]})
-  (context* "/hello" []
-    :tags ["hello"]
+  (context* "/v1" []
+    :tags ["Exercism API V1"]
+    exercise-routes
     (GET* "/" []
       :return Message
       :query-params [name :- String]

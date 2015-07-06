@@ -7,7 +7,7 @@
 (defn parse-body [body]
   (cheshire/parse-string (slurp body) true))
 
-(facts "Compojure api tests"
+#_(facts "Compojure api tests"
 
   (fact "Test GET request to /hello?name={a-name} returns expected response"
     (let [response (app (-> (mock/request :get  "/hello?name=Stranger")))

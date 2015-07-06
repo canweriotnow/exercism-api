@@ -22,7 +22,7 @@
 
 (s/defschema Comment
   ;; STUB
-  {:id s/Integer
+  {:id s/Num
    :user_id s/Num
    :submission_id s/Num
    :body s/Str
