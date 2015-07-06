@@ -9,7 +9,19 @@
    :active s/Bool
    :problems [s/Str]})
 
+;; TODO Disambiguate "Problem" and "Exercise"
 (s/defschema Problem
+  {:id s/Str
+   :language s/Str
+   :track_id s/Str
+   :name s/Str
+   :slug s/Str
+   :files {
+           ;; TODO
+           }
+   :fresh s/Bool})
+
+(s/defschema Exercise
   {:id s/Str
    :language s/Str
    :track_id s/Str
