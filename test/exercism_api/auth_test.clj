@@ -7,11 +7,11 @@
 ;; TODO - Actually learn to use Midje
 (facts "Exercsim auth tests"
        (fact "Var default is a String"
-             (= (class default) java.lang.String))
+             (class default) => java.lang.String)
        (fact "In absence of env var, secret is the same as default"
-             (= (secret default)))
+             secret => default)
        (fact "Shared key is the SHA1 hash of secret"
-             (= shared-key (sha1 secret)))
+             (sha1 secret) => shared-key)
        (fact "Validates identity of a key as the shared key"
              (let [key (sha1 secret)]
-               (= true (validate key)))))
+               (validate key) => true)))
