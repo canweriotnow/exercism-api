@@ -8,7 +8,7 @@ A (prototype) next-gen API for [[http://exercism.io][exercism.io]]
 
 *** Run the application locally
 
-=lein ring server=
+=lein run=
 
 *** Run the tests
 
@@ -16,14 +16,10 @@ A (prototype) next-gen API for [[http://exercism.io][exercism.io]]
 
 *** Packaging and running as standalone jar
 
-#+BEGIN_SRC Clojure
-lein do clean, ring uberjar
+#+BEGIN_SRC Shell
+lein do clean, uberjar
 java -jar target/server.jar
 #+END_SRC
-
-*** Packaging as war
-
-=lein ring uberwar=
 
 ** License
 
