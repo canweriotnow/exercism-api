@@ -1,5 +1,6 @@
 (ns exercism-api.db.models
-  (:require [korma.db :refer :all]))
+  (:require [korma.db :refer :all]
+            [korma.core :refer :all]))
 
 ;; Obviously, change all this to environ before prod
 (defdb exercism-dev
