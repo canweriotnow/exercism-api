@@ -35,7 +35,7 @@
         :return Problem
         :summary "Problem README"
         (dummy))
-  (GET* "/problems/:track-id:slug/tests" [track-id slug]
+  (GET* "/problems/:track-id/:slug/tests" [track-id slug]
         :return Test
         :summary "Problem test"
         (dummy))
